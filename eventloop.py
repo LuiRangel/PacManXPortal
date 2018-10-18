@@ -25,12 +25,16 @@ class EventLoop:
     def check_keydown_events(event, pacman):
         if event.key == pygame.K_RIGHT:
             pacman.moving_right = True
+            pacman.orientation = "Right"
         elif event.key == pygame.K_LEFT:
             pacman.moving_left = True
+            pacman.orientation = "Left"
         elif event.key == pygame.K_UP:
             pacman.moving_up = True
+            pacman.orientation = "Up"
         elif event.key == pygame.K_DOWN:
             pacman.moving_down = True
+            pacman.orientation = "Down"
             # elif event.key == pygame.K_SPACE:
             # fire_bullet(ai_settings, screen, ship, bullets)
         elif event.key == pygame.K_q:

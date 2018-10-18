@@ -17,9 +17,9 @@ class Game:
         self.screen = pygame.display.set_mode((self.ai_settings.screen_width, self.ai_settings.screen_height))
         pygame.display.set_caption("PacMan X Portal")
 
-        self.menu = Menu(self.screen, 'PAC-MAN')
+        self.menu = Menu(self.screen, 'PAC-MAN X PORTAL')
 
-        self.maze = Maze(self.screen, 'images/maze.txt', 'brick')
+        self.maze = Maze(self.screen, 'images/maze.txt', 'brick', 'dot', 'powerpill')
 
         self.pacman = Pacman(self.screen, self.ai_settings)
 
@@ -30,6 +30,7 @@ class Game:
 
         while not eloop.finished:
             eloop.check_events(self.ai_settings, self.menu, self.pacman)
+            self.pacman.check_dot_collision(self.ai_settings, self.maze.dots, self.maze.pills)
             self.update_screen()
             self.pacman.check_wall_collision(self.maze.bricks)
             self.pacman.update()
