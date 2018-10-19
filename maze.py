@@ -1,6 +1,5 @@
 import pygame
 from imagerect import ImageRect
-from pygame.sprite import Group
 
 
 class Maze:
@@ -40,7 +39,6 @@ class Maze:
 
     def build(self):
         r = self.brick.rect
-        d = self.dot.rect
         w, h = r.width, r.height
         dx, dy = self.deltax, self.deltay
 

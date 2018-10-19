@@ -3,7 +3,7 @@ import pygame.font
 
 class Menu:
 
-    def __init__(self, screen, title):
+    def __init__(self, screen, title, score_menu):
         self.screen = screen
         self.screen_rect = screen.get_rect()
 
@@ -11,11 +11,18 @@ class Menu:
         self.title_color = (254, 249, 27)
         self.title = title
 
+        self.score_menu = score_menu
+        self.score_menu_color = (255, 255, 255)
+        self.score_menu_font = pygame.font.SysFont(None, 50)
+
         self.title_image = False
         self.title_image_rect = False
+        self.score_menu_image = False
+        self.score_menu_image_rect = False
 
         self.play_button = Button(screen, 'PLAY')
         self.prep_title(self.title)
+        self.prep_score_menu(self.score_menu)
 
     def prep_title(self, title):
         self.title_image = self.title_font.render(title, True, self.title_color, None)
@@ -24,8 +31,16 @@ class Menu:
         self.title_image_rect.centerx = self.screen_rect.centerx
         self.title_image_rect.centery = self.screen_rect.centery - (self.screen_rect.centery / 2)
 
+    def prep_score_menu(self, score_menu):
+        self.score_menu_image = self.score_menu_font.render(score_menu, True, self.score_menu_color, None)
+        self.score_menu_image_rect = self.score_menu_image.get_rect()
+
+        self.score_menu_image_rect.centerx = self.screen_rect.centerx - 50
+        self.score_menu_image_rect.centery = self.screen_rect.centery - 100
+
     def draw_menu(self):
         self.screen.blit(self.title_image, self.title_image_rect)
+        self.screen.blit(self.score_menu_image, self.score_menu_image_rect)
         self.play_button.draw_button()
 
 
