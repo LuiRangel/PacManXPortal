@@ -4,7 +4,7 @@ from pacman import Pacman
 from settings import Settings
 from eventloop import EventLoop
 from menu import Menu
-import game_functions as gf
+from pygame import mixer
 
 
 class Game:
@@ -12,6 +12,7 @@ class Game:
 
     def __init__(self):
         pygame.init()
+        mixer.init()
         ai_settings = Settings()
         self.ai_settings = ai_settings
         self.screen = pygame.display.set_mode((self.ai_settings.screen_width, self.ai_settings.screen_height))

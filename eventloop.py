@@ -57,6 +57,7 @@ class EventLoop:
         button_clicked = menu.play_button.rect.collidepoint(mouse_x, mouse_y)
         if button_clicked and not ai_settings.finished:
             pygame.mixer.music.play(0)
+
             # Hide the mouse cursor.
             pygame.mouse.set_visible(False)
             ai_settings.finished = True
