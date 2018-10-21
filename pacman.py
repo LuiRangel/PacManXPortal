@@ -10,10 +10,8 @@ class Pacman(Sprite):
         self.ai_settings = ai_settings
 
         self.images = []
-        self.images.append(pygame.image.load('images/pacmanH-1.png'))
-        self.images.append(pygame.image.load('images/pacmanH-2.png'))
-        self.images.append(pygame.image.load('images/pacmanV-1.png'))
-        self.images.append(pygame.image.load('images/pacmanV-2.png'))
+        self.images.append(pygame.image.load('images/pacman_open.png'))
+        self.images.append(pygame.image.load('images/pacman_closed.png'))
 
         self.index = 0
         self.image = self.images[self.index]
@@ -50,14 +48,14 @@ class Pacman(Sprite):
             self.rect.centerx -= self.ai_settings.pacman_speed
         if self.moving_up and self.rect.top > self.screen_rect.top:
             self.index += 1
-            if self.index > 3:
-                self.index = 2
+            if self.index > 1:
+                self.index = 0
             self.image = self.images[self.index]
             self.rect.centery -= self.ai_settings.pacman_speed
         if self.moving_down and self.rect.bottom < self.screen_rect.bottom:
             self.index += 1
-            if self.index > 3:
-                self.index = 2
+            if self.index > 1:
+                self.index = 0
             self.image = self.images[self.index]
             self.rect.centery += self.ai_settings.pacman_speed
 
@@ -67,9 +65,9 @@ class Pacman(Sprite):
         elif self.orientation == "Left":
             self.screen.blit(self.image, self.rect)
         elif self.orientation == "Up":
-            self.screen.blit(self.image, self.rect)
+            self.screen.blit(pygame.transform.rotate(self.image, -90), self.rect)
         elif self.orientation == "Down":
-            self.screen.blit(pygame.transform.flip(self.image, False, True), self.rect)
+            self.screen.blit(pygame.transform.rotate(self.image, 90), self.rect)
         # pygame.draw.rect(self.screen, (230, 0, 0), self.rect, 1)
 
     def center_pacman(self):

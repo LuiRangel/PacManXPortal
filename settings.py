@@ -13,7 +13,7 @@ class Settings:
         self.waka = pygame.mixer.Sound('sounds/waka.wav')
 
         # pacman settings
-        self.pacman_speed = 1
+        self.pacman_speed = 2
 
         # scoring
         self.score = 0

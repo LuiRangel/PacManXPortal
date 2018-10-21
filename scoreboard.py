@@ -22,7 +22,8 @@ class Scoreboard:
         self.prep_high_score()
 
     def prep_score(self):
-        score_str = str(self.ai_settings.score)
+        score = round(self.ai_settings.score)
+        score_str = "{:,}".format(score)
         self.score_image = self.font.render(score_str, True, self.s_text_color, self.ai_settings.BLACK)
 
         self.score_rect = self.score_image.get_rect()
