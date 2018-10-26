@@ -7,6 +7,9 @@ from menu import Menu
 from pygame import mixer
 from os import path
 from scoreboard import Scoreboard
+from ghost import Ghost
+from pygame.sprite import Group
+
 
 class Game:
     BLACK = (0, 0, 0)
@@ -23,9 +26,15 @@ class Game:
         self.sb = Scoreboard(self.ai_settings, self.screen)
         self.load_data()
 
-        self.maze = Maze(self.screen, 'images/maze.txt', 'brick', 'dot', 'powerpill')
+        self.maze = Maze(self.screen, 'images/pacmanportalmaze_dijkstra.txt', 'brick', 'dot', 'powerpill')
 
         self.pacman = Pacman(self.screen, self.ai_settings)
+
+        self.ghosts = Group()
+
+        self.ghost = Ghost(self.screen, ai_settings)
+
+        self.ghosts.add(self.ghost)
 
     def __str__(self): return 'Game(Pacman Portal), maze=' + str(self.maze) + ')'
 
@@ -47,6 +56,7 @@ class Game:
             self.update_screen()
             self.pacman.check_wall_collision(self.maze.bricks)
             self.pacman.update()
+            self.ghost.update_ghost(self.pacman, self.maze.nodes)
 
     def update_screen(self):
         self.screen.fill(Game.BLACK)
@@ -59,6 +69,7 @@ class Game:
         else:
             self.maze.blitme()
             self.pacman.blitme()
+            self.ghost.blitme()
             self.sb.show_score()
 
         pygame.display.flip()

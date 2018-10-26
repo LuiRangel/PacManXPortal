@@ -24,7 +24,7 @@ class Pacman(Sprite):
 
         self.rect.centerx = self.screen_rect.centerx
         # self.rect.centery = self.screen_rect.centery + 10
-        self.rect.centery = self.screen_rect.centery - 40
+        self.rect.centery = self.screen_rect.centery + 25
 
         self.center = float(self.rect.centerx)
         self.moving_right = False
@@ -114,3 +114,10 @@ class Pacman(Sprite):
                 self.ai_settings.score += self.ai_settings.pill_points
                 sb.prep_score()
             counter += 1
+
+    @staticmethod
+    def find_node(nodes):
+
+        # for node in nodes:
+
+        return 'hD'
