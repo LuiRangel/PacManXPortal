@@ -21,8 +21,8 @@ class Ghost(Sprite):
 
         self.rect.x = self.rect.width
         self.rect.y = self.rect.height
-        self.rect.centerx = 460 # self.screen_rect.centerx + 15
-        self.rect.centery = 280 # self.screen_rect.centery - (self.screen_rect.centery / 3) - 13
+        self.rect.centerx = 460  # self.screen_rect.centerx + 15
+        self.rect.centery = 280  # self.screen_rect.centery - (self.screen_rect.centery / 3) - 13
         self.x = float(self.rect.x)
 
         self.active = False
