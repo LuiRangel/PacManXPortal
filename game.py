@@ -27,7 +27,7 @@ class Game:
         self.load_data()
 
         self.maze = Maze(self.screen, 'images/pacmanportalmaze_dijkstra.txt', 'brick', 'dot', 'powerpill')
-
+        # self.maze = Maze(self.screen, 'images/maze.txt', 'brick', 'dot', 'powerpill')
         self.pacman = Pacman(self.screen, self.ai_settings)
 
         self.ghosts = Group()
