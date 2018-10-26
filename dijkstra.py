@@ -87,9 +87,7 @@ def dijkstra(start, goal):
              'lG': {'lE': 5,  'kG': 5, 'lK': 19},
              'lK': {'lG': 19, 'kK': 5},
              }
-    for ele in len(graph):
-        print(ele)
-        
+
     shortest_distance = {}
     predecessors = {}
     unseen_nodes = graph
